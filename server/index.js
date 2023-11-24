@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 dotenv.config();
 
-import Transaction from "./models/transaction.js";
+import { PostApiTransaction , GetApiTransactions } from "./controllers/transaction.js";
 
 const app = express();
 app.use(express.json());
@@ -23,51 +23,9 @@ app.get('/api/health' , async (req ,res)=>{
     })
 })
 
-app.post('/api/transaction' , async (req , res)=>{
-    const {amount , type , category , description } = req.body ;
+app.post('/api/transaction' , PostApiTransaction)
 
-    const transaction = new Transaction({
-        amount,
-        type,
-        category,
-        description,
-    });
-    try{
-        const respons = await transaction.save()
-
-        res.json({
-            success : true,
-            data : respons ,
-            message : "transaction add successfuly"
-        })
-    }catch(err){
-        res.json({
-            success : false,
-            message : err.message
-        })
-
-    }
-    
-})
-
-app.get("/api/transactions" , async (req , res)=>{
-    try{
-        const transactions = await Transaction.find(); 
-
-        res.json({
-            success : true ,
-            data : transactions,
-            message : "Successfuly fatch all Transaction"
-        })
-    }catch(err){
-        res.json({
-            success : false ,
-            message : err.message
-        })
-    }
-    
-
-})
+app.get("/api/transactions" , GetApiTransactions )
 
 
 

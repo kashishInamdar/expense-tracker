@@ -1,26 +1,32 @@
 import Transaction from "../models/transaction.js";
+import { responder } from "../util.js";
+
 const PostApiTransaction =  async (req , res)=>{
-    const {amount , type , category , description } = req.body ;
+    const {amount , type , catagory , description } = req.body ;
 
     const transaction = new Transaction({
         amount,
         type,
-        category,
+        catagory,
         description,
     });
     try{
         const respons = await transaction.save()
 
-        res.json({
-            success : true,
-            data : respons ,
-            message : "transaction add successfuly"
-        })
+        responder({ res , success: true , data : respons , message: "transaction add successfuly" })
+
+        // res.json({
+        //     success : true,
+        //     data : respons ,
+        //     message : "transaction add successfuly"
+        // })
     }catch(err){
-        res.json({
-            success : false,
-            message : err.message
-        })
+
+        responder({message : err.message})
+        // res.json({
+        //     success : false,
+        //     message : err.message
+        // })
 
     }
     
@@ -30,16 +36,11 @@ const GetApiTransactions = async (req , res)=>{
     try{
         const transactions = await Transaction.find(); 
 
-        res.json({
-            success : true ,
-            data : transactions,
-            message : "Successfuly fatch all Transaction"
-        })
+        responder({ res, success:true , data: transactions , message : "Successfuly fatch all Transaction" })
+
     }catch(err){
-        res.json({
-            success : false ,
-            message : err.message
-        })
+
+        responder({message : err.message})
     }
     
 }

@@ -1,0 +1,27 @@
+.transaction-box{
+  border: 2px solid #ccc;
+  margin: 20px 100px;
+  padding: 10px 20px;
+  border-radius: 5px ;
+  position: relative;
+}
+.bold{
+  font-weight: bold;
+  font-size: 25px;
+}
+.debit{
+  color: red;
+}
+.credit{
+  color: green;
+}
+.t-type{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.t-catagory{
+  position: absolute;
+  right: 50%;
+ 
+}

@@ -32,15 +32,7 @@ const PostApiV1Signup = async (req ,res)=>{
    
 }
 
-const GetApiV1Signup = async (req , res ) =>{
 
-    try{
-        const Users = await User.find()
-    }
-    catch(err){
-        
-    }
-    
-}
 
-export { PostApiV1Signup , GetApiV1Signup }
+
+export { PostApiV1Signup  }

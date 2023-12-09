@@ -2,9 +2,10 @@ import Transaction from "../models/transaction.js";
 import { responder } from "../util.js";
 
 const PostApiTransaction =  async (req , res)=>{
-    const {amount , type , catagory , description } = req.body ;
+    const {amount , type , catagory , description , user } = req.body ;
 
     const transaction = new Transaction({
+        user,
         amount,
         type,
         catagory,

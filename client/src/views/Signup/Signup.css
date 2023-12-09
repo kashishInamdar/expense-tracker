@@ -1,0 +1,17 @@
+.input-box-container{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 2px 2px 15px 5px rgb(55, 39, 62);
+    padding: 20px 10px;
+}
+.input-box{
+    margin: 20px 30px;
+    padding: 5px 20px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid ;
+}

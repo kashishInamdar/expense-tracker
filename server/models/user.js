@@ -22,11 +22,6 @@ const userSchema = new Schema({
     password: {
         type : String,
         require : true
-    },
-    grnder:{
-        type:String,
-        enum : ["male" , "female" , "other"],
-        require : true
     }
 })
 

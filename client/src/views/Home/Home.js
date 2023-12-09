@@ -50,7 +50,7 @@ function Home() {
                  type === "credit" ? "Credited" : "Debited" 
               }
              </span>
-             <hr/>
+             < hr/>
              {description}
              
             </div>

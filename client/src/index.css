@@ -6,3 +6,11 @@ body{
   text-align: center;
   color: #b155fd;
 }
+button{
+  background-color: #b155fd ;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}

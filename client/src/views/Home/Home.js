@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import axios from "axios"
 
+import Transaction from './../../component/Transactions/Transactions.js';
+import Navbar from '../../component/Navbar/Navbar.js';
+
 function Home() {
 
   const [transactions , setTransactions] = useState([])
@@ -27,33 +30,19 @@ function Home() {
   return (
     
     <div>
+      <Navbar />
       {
         transactions?.map(( transaction , index)=>{
           const { amount , type , catagory , description ,createdAt ,_id } = transaction
 
 
           return(
-            <div className='transaction-box'>
-              <span className = {` ${ type === "credit" ? "credit" : "debit"}  bold`} > 
-                {amount} 
-              
-              {
-                type === "credit" ? "+" : "-" 
-              }
-              </span>
-              <span className='t-catagory'>
-                {catagory}
-              </span>
-
-             <span className='t-type'>
-              {
-                 type === "credit" ? "Credited" : "Debited" 
-              }
-             </span>
-             < hr/>
-             {description}
-             
-            </div>
+            <Transaction 
+              index={index}
+              amount={amount} 
+              type={type} 
+              catagory={catagory}  
+              description={description}  />
           )
         })
       }

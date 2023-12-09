@@ -6,12 +6,41 @@
     background-color: #fff;
     box-shadow: 2px 2px 15px 5px rgb(55, 39, 62);
     padding: 20px 10px;
+    position: relative;
 }
 .input-box{
-    margin: 20px 30px;
+    margin: 10px 30px;
     padding: 5px 20px;
     font-size: 20px;
     outline: none;
     border: none;
     border-bottom: 1px solid ;
+}
+.signup-btn{
+    font-size: 20px;
+    width: 200px;
+    margin: 5px auto;
+}
+.link{
+    color: blue;
+    cursor: pointer;
+    text-decoration: none;
+}
+.link-position{
+    position: absolute;
+    right: 10px;
+    bottom: -5px;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .input-box-container{
+        width: 80vw;
+    }
+    .input-box{
+        font-size: 15px;
+    }
+    .signup-btn{
+        width: 40vw;
+    }
 }

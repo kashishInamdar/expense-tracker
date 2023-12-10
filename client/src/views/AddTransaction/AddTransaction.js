@@ -2,6 +2,7 @@ import "./AddTransaction.css"
 import "./../Signup/Signup.css"
 import { useState } from "react"
 import axios from "axios"
+import Navbar from "../../component/Navbar/Navbar"
 
 const AddTransaction = () => {
     const [amount, setAmount] = useState("")
@@ -36,6 +37,7 @@ const AddTransaction = () => {
 
     return (
         <>
+            <Navbar />
             <form>
                 <div className="input-box-container">
                     <h1 className="title">Add Expences</h1>

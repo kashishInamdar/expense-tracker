@@ -18,6 +18,7 @@ function Navbar() {
       <div>
       {/* <Link to="/orders" className='nav-btn'>My Orders</Link> */}
 
+        <Link to="/transactions" className='nav-btn'>Transactions</Link>
         <Link to="/add-transaction" className='nav-btn'>Add Transaction</Link>
         <Link to="/signup" className='nav-btn'>Signup</Link>
         <Link to="/login" className='nav-btn'>Login</Link>

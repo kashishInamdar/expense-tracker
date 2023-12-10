@@ -1,0 +1,7 @@
+.type-input{
+    border-bottom: 1px solid black;
+    padding: 3px 20px;
+    width: 300px;
+    margin : 5px auto;
+    font-size: 22px;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
-import { Link, json } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function Navbar() {
@@ -13,10 +13,12 @@ function Navbar() {
 
   return (
     <div className='nav-container'>
-      <Link to='/'className='logo' > <span className='logoname'><span className='F'>F</span>ashionHub</span></Link>
+      <Link to='/'className='logo' > <span className='logoname'><span className='F'>Ex</span>pense<span className='F'>T</span>racker</span></Link>
 
       <div>
       {/* <Link to="/orders" className='nav-btn'>My Orders</Link> */}
+
+        <Link to="/add-transaction" className='nav-btn'>Add Transaction</Link>
         <Link to="/signup" className='nav-btn'>Signup</Link>
         <Link to="/login" className='nav-btn'>Login</Link>
         

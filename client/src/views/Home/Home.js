@@ -19,8 +19,6 @@ function Home() {
       console.log(err);
       alert("Error Loading Trancaction")
     }
-
-     
   }
 
   useEffect(()=>{

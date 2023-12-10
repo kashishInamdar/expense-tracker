@@ -16,7 +16,7 @@ const trancationSchema = new Schema({
     },
     catagory: {
         type : String,
-        enum : ["food" , "work", "education" , "Entertenment" , "Shoping" , "Traval" , 'other'],
+        enum : [ "food" , "entertainement" , "shopping", "rent" ,"travel" , "education" ,"salary" ,"freelancing" , "side-hussle" , "other" ],
         default : "other"
     },
     description : {

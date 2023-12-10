@@ -87,5 +87,32 @@ const DeleteApiTransactionById = async (req, res) => {
         })
     }
 }
+const PutApiTransactionById = async (req , res)=>{
+    const {id} = req.params;
+    const {amount , type , catagory , description} = req.body;
 
-export { PostApiTransaction, GetApiTransactions, GetApiTransactionByUserId, DeleteApiTransactionById };
+    try{
+        const updateTran = await Transaction.updateOne({_id : id},{
+            amount,
+            type,
+            catagory,
+            description,
+        })
+        const updatedTran = await Transaction.find({_id : id})
+        
+        res.status(201).json({
+            success : true,
+            data : updateTran,
+            massage : "Successfuly Updated"
+        })
+    }catch(err){
+        res.status(400).json({
+            success : false,
+            massage : err.message
+        })
+
+    }
+    
+}
+
+export { PostApiTransaction, GetApiTransactions, GetApiTransactionByUserId, DeleteApiTransactionById , PutApiTransactionById };

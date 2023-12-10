@@ -26,3 +26,12 @@
   right: 50%;
  
 }
+
+@media only screen and (max-width: 600px) {
+  .transaction-box{
+    margin: 20px 10px;
+  }
+  .bold{
+    font-size: 20px;
+  }
+}

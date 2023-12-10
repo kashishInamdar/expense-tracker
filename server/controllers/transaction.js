@@ -46,6 +46,19 @@ const GetApiTransactions = async (req, res) => {
 
 }
 
+const GetApiTransactionById = async (req, res) => {
+    const { id } = req.params;
+
+    const transaction = await Transaction.findOne({ _id: id })
+
+    res.json
+        ({
+            success: true,
+            data:  transaction,
+            message: "successfully show Transactions"
+        })
+}
+
 const GetApiTransactionByUserId = async (req, res) => {
     try {
         const { id } = req.params;
@@ -115,4 +128,4 @@ const PutApiTransactionById = async (req , res)=>{
     
 }
 
-export { PostApiTransaction, GetApiTransactions, GetApiTransactionByUserId, DeleteApiTransactionById , PutApiTransactionById };
+export { PostApiTransaction, GetApiTransactions, GetApiTransactionById , GetApiTransactionByUserId, DeleteApiTransactionById , PutApiTransactionById };

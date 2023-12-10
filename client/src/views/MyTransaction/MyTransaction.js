@@ -44,6 +44,16 @@ function MyTransaction() {
   }
 
   useEffect(()=>{
+    const userstorageData = JSON.parse(localStorage.getItem('user') || '{}');
+
+    if (userstorageData?.email) {
+      setUser(userstorageData);
+    }
+    else {
+      alert('you are not logged in!');
+      window.location.href = '/login'
+    }
+
     loadTransaction()
   } , [])
 
@@ -58,11 +68,13 @@ function MyTransaction() {
 
           return(
             <Transaction 
+              id={_id}
               index={index}
               amount={amount} 
               type={type} 
               catagory={catagory}  
-              description={description}  />
+              description={description} 
+              loadTransaction={loadTransaction} />
           )
         })
       }

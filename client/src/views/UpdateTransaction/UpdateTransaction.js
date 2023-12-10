@@ -1,46 +1,57 @@
-import "./AddTransaction.css"
-import "./../Signup/Signup.css"
-import { useState } from "react"
+import "./UpdateTransaction"
 import axios from "axios"
-import Navbar from "../../component/Navbar/Navbar"
 
-const AddTransaction = () => {
+import { useEffect, useState } from "react"
+import Navbar from "../../component/Navbar/Navbar"
+import { useParams } from "react-router-dom"
+
+const UpdateTransaction = ()=>{
     const [amount, setAmount] = useState("")
     const [type, setType] = useState("cradit")
     const [description, setDescription] = useState("")
     const [catagory, setCatagory] = useState("")
 
-    const addTransaction = async () => {
-        const userStorage = JSON.parse(localStorage.getItem('user'));
+    const {id} = useParams();
 
-        try {
-            const response = await axios.post("/api/transaction", {
-                user: userStorage?._id,
-                amount: amount,
-                type: type,
-                description: description,
-                catagory: catagory
-            })
-
-            alert(response?.data?.massage)
-            if (response?.data?.success) {
-                window.location.href = "/transactions"
-            }
-        }
-        catch (err) {
-            alert(err.massage)
-        }
-
-
+    const GetTransaction = async () =>{
+        const respons = await axios.get(`/api/transactions/${id}`)
+        const {amount , type , description , catagory} = respons?.data?.data;
+        setAmount(amount)
+        setType(type)
+        setDescription(description)
+        setCatagory(catagory)
     }
 
+    useEffect(()=>{
+        GetTransaction()
+    } , [])
+
+    const updateTransaction = async () => {
+        const response = await axios.put(`/api/transactions/${id}`, {
+          amount,
+          type,
+          description,
+          catagory
+        })
+    
+        if (response?.data?.data) {
+          alert('Transaction updated successfully' );
+          window.location.href = '/transactions'
+        }
+    
+        setAmount('')
+        setCatagory('')
+        setDescription('')
+        setType('')
+    
+      }
 
     return (
         <>
             <Navbar />
             <form>
                 <div className="input-box-container">
-                    <h1 className="title">Add Expences</h1>
+                    <h1 className="title">Update Expences</h1>
 
                     <input type="number" placeholder="Amount" className="input-box"
                         value={amount}
@@ -99,12 +110,13 @@ const AddTransaction = () => {
                     <br />
 
                     <button type="button" className="signup-btn"
-                        onClick={addTransaction}> Add Transaction </button>
+                        onClick={updateTransaction}> Update Transaction </button>
 
                 </div>
             </form>
         </>
     )
+ 
 }
 
-export default AddTransaction
+export default UpdateTransaction

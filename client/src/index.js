@@ -7,6 +7,7 @@ import Signup from "./views/Signup/Signup.js"
 import Login from './views/Login/Login.js';
 import { createBrowserRouter , RouterProvider} from "react-router-dom"
 import AddTransaction from './views/AddTransaction/AddTransaction.js';
+import UpdateTransaction from './views/UpdateTransaction/UpdateTransaction.js';
  
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
         path : "/add-transaction",
         element : <AddTransaction />
+    },
+    {
+        path : "update-transaction/:id",
+        element : <UpdateTransaction />
     }
 
 ])

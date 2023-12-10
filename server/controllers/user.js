@@ -32,7 +32,26 @@ const PostApiV1Signup = async (req ,res)=>{
    
 }
 
+const GetApiV1Users = async (req ,res) =>{
+    try{
+        const Transaction = await User.find()
+
+        res.status(201).json({
+            success : true,
+            data : Transaction , 
+            massage : "Successfuly get all tarnsaction"
+        })
+
+    }
+    catch(err){
+        res.status(400).json({
+            success : false,
+            message : err.massage
+        })
+    }
+}
 
 
 
-export { PostApiV1Signup  }
+
+export { PostApiV1Signup , GetApiV1Users }

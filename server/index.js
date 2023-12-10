@@ -3,10 +3,10 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 dotenv.config();
 
-import { PostApiTransaction , GetApiTransactions } from "./controllers/transaction.js";
+import { PostApiTransaction , GetApiTransactions , GetApiTransactionByUserId } from "./controllers/transaction.js";
 import { responder } from "./util.js";
 import User from "./models/user.js";
-import { PostApiV1Signup   } from "./controllers/user.js";
+import { PostApiV1Signup , GetApiV1Users  } from "./controllers/user.js";
 
 const app = express();
 app.use(express.json());
@@ -30,11 +30,12 @@ app.get('/api/health' , async (req ,res)=>{
 // ----------- Transaction  --------------- 
 app.post('/api/transaction' , PostApiTransaction)
 app.get("/api/transactions" , GetApiTransactions )
+app.get('/api/transactions/users/:id',GetApiTransactionByUserId)
+
 
 // ------------ User ------------
 
 app.post('/api/v1/signup' ,  PostApiV1Signup)
-
 app.post('/api/v1/login' , async (req , res)=>{
     const {email , password} = req.body;
 
@@ -71,6 +72,8 @@ app.post('/api/v1/login' , async (req , res)=>{
     }
    
 })
+
+app.get("/api/v1/users" , GetApiV1Users )
 
 const PORT = process.env.PORT || 5000 ; 
 

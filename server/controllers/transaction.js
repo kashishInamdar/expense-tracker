@@ -46,4 +46,27 @@ const GetApiTransactions = async (req , res)=>{
     
 }
 
-export {PostApiTransaction , GetApiTransactions} ;
+const GetApiTransactionByUserId = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const userTransaction = await Transaction.find({ user: id }).populate('user')
+
+        userTransaction.forEach((singleTransaction) => {
+            singleTransaction.user.password = undefined;
+        })
+        res.json({
+            success: true,
+            data: userTransaction,
+            message: "fetch user transaction"
+        })
+    }
+    catch (err) {
+        res.json({
+            success: false,
+            message: err.message
+        })
+    }
+}
+
+export {PostApiTransaction , GetApiTransactions , GetApiTransactionByUserId} ;

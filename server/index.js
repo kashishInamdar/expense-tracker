@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 dotenv.config();
 
-import { PostApiTransaction , GetApiTransactions , GetApiTransactionByUserId } from "./controllers/transaction.js";
+import { PostApiTransaction , GetApiTransactions , GetApiTransactionByUserId , DeleteApiTransactionById} from "./controllers/transaction.js";
 import { responder } from "./util.js";
 import User from "./models/user.js";
 import { PostApiV1Signup , GetApiV1Users  } from "./controllers/user.js";
@@ -31,7 +31,7 @@ app.get('/api/health' , async (req ,res)=>{
 app.post('/api/transaction' , PostApiTransaction)
 app.get("/api/transactions" , GetApiTransactions )
 app.get('/api/transactions/users/:id',GetApiTransactionByUserId)
-
+app.delete("/api/transactions/:id", DeleteApiTransactionById)
 
 // ------------ User ------------
 

@@ -4,16 +4,20 @@ import edit from "./pencil.png"
 import axios from "axios"
 import showToast from 'crunchy-toast';
 
-const deleteUserTransaction = async (id , loadTransaction) => {
+const deleteUserTransaction = async (id, loadTransaction) => {
     const response = await axios.delete(`/api/transactions/${id}`);
 
     if (response?.data?.success) {
-      showToast(response?.data?.message, 'success', '3000');
-      loadTransaction();
+        showToast(response?.data?.message, 'success', '3000');
+        loadTransaction();
     }
-  }
+}
 
-const Transactions = ({ amount, type, index, catagory, description , id , loadTransaction }) => {
+const updateTran = async (id) => {
+    window.location.href = `/api/transactions/${id}`
+}
+
+const Transactions = ({ amount, type, index, catagory, description, id, loadTransaction }) => {
     return (
         <div className='transaction-box' key={index}>
             <span className={` ${type === "credit" ? "credit" : "debit"}  bold`} >
@@ -34,11 +38,15 @@ const Transactions = ({ amount, type, index, catagory, description , id , loadTr
             </span>
             < hr />
             {description}
-            <img src={edit} alt="update" className="edit-btn" />
+            <img src={edit} alt="update" className="edit-btn"
+                onClick={() => {
+                    updateTran(id)
+                }}
+            />
             <img src={delet} alt="delete" className="delet-btn"
-            onClick={()=>{
-                deleteUserTransaction(id , loadTransaction)
-            }}
+                onClick={() => {
+                    deleteUserTransaction(id, loadTransaction)
+                }}
             />
 
         </div>

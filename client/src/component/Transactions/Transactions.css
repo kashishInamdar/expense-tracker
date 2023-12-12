@@ -1,0 +1,14 @@
+.edit-btn{
+    width: 20px;
+    position: absolute;
+    right: 60px;
+    bottom: 5px;
+    cursor: pointer;
+}
+.delet-btn{
+    width: 20px;
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+    cursor: pointer;
+}

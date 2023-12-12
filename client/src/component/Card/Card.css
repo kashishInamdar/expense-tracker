@@ -1,0 +1,29 @@
+.card-container{
+    position: relative;
+    top: 200px;
+    left: 50px;
+}
+.info-card{
+    background-color: aliceblue;
+    width: 200px;
+    height: 250px;
+    margin: 20px;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px 20px;
+}
+.vector-icon{
+    width: 80px;
+}
+.name{
+    font-size: 25px;
+    width: 30px;
+    position: absolute;
+    right: 100px;
+    top: 20px;
+}
+.info{
+    margin-top: 30px;
+    font-size: 20px;
+    color: rgb(52, 45, 45);
+}

@@ -48,17 +48,26 @@
       color: violet;
       font-size: 32px;
   }
-  
+  .menu-btn{
+    width: 25px;
+    position: absolute;
+    right: 30px;
+    display: none;
+  } 
+
+
   @media screen and (max-width: 768px) {
   
+    .menu-btn{
+      display: block;
+      top: 40px;
+    }
     .nav-container {
       display: flex;
       flex-direction: column;
       
       justify-content: center;
       align-items: start;
-      
-      
     } 
   
     .nav-btn {
@@ -82,6 +91,9 @@
       }
       .user{
         flex-direction: column;
+      }
+      .disply{
+        display: none;
       }
   
   }

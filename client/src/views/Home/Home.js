@@ -11,7 +11,7 @@ import Card from "../../component/Card/Card"
 
 const Home = () => {
     return (
-        <>
+        <div className="home-page">
             <Navbar /> 
            
             <div className="container">
@@ -38,7 +38,7 @@ const Home = () => {
                 </div>
             </div>
             <img src={vactor} alt="vactor" className="vactor" />
-        </>
+        </div>
     )
 }
 

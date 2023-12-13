@@ -12,11 +12,10 @@ import Card from "../../component/Card/Card"
 const Home = () => {
     return (
         <>
-            <Navbar />
+            <Navbar /> 
            
             <div className="container">
-                
-                <img src={vactor} alt="vactor" className="vactor" />
+                <div className="emty-container"></div>
                 <div className="main-div">
 
                     <div className="containt-div">
@@ -27,17 +26,18 @@ const Home = () => {
                     <div className="card-container">
                         <h2 className="title-2">About Project</h2>
                         <div className="cards">
-                            <Card title={"Track Incom"} image={trackIncom} info={`Get information from thi user  useing Add Transaction Page`} />
+                            <Card title={"Track Incom"} image={trackIncom} info={`Get information from the user  useing Add Transaction Page`} />
 
                             <Card title={"Add Transaction"} image={addTran} info={`We can add the amount, type(ex. food , education) , Category (Credit / Debit) and Description`} />                           
                             <Card title={"Perform Opration"} image={Opration} info={`Perform Opration on transaction Like Create update or Delete the  texpence information`} />                           
                             <Card title={"All Expensenc"} image={allTransaction} info={`See all expences on traker Information on Transaction page`} />                           
                         </div>
-<br/>
+
                     </div>
 
                 </div>
             </div>
+            <img src={vactor} alt="vactor" className="vactor" />
         </>
     )
 }

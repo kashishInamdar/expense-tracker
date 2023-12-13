@@ -10,7 +10,7 @@ width: auto;
     height: 500px;
     position: sticky;
     left: 5px;
-    top: 0;
+    top: 10px;
     z-index: -2;
 }
 .containt-div{
@@ -20,9 +20,10 @@ width: auto;
    
     
 }
-.title{
+.title-1{
     color: rgb(249, 249, 255);
     font-size: 60px;
+    text-align: center;
     margin-top: 100px;
     text-shadow: 1px 1px rgb(7, 7, 7) ;
 }
@@ -53,7 +54,15 @@ width: auto;
 .cards{
     display: flex;
     flex-wrap: wrap;
+    position: absolute;
+    
 }
 .card-container{
-    margin-left: 100px;
+   margin: 0;
+   margin-right: 30px;
+   position: absolute;
+   right: -50px;
+}
+.emty-container{
+    width: 500px;
 }

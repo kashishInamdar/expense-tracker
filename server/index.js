@@ -2,14 +2,17 @@ import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 dotenv.config();
+import path from 'path';
 
 import { PostApiTransaction , GetApiTransactions , GetApiTransactionById , GetApiTransactionByUserId , PutApiTransactionById , DeleteApiTransactionById} from "./controllers/transaction.js";
 import { responder } from "./util.js";
 import User from "./models/user.js";
-import { PostApiV1Signup , GetApiV1Users  } from "./controllers/user.js";
+import { PostApiV1Signup , PostApiV1Login , GetApiV1Users  } from "./controllers/user.js";
 
 const app = express();
 app.use(express.json());
+
+const __dirname = path.resolve();
 
 const connectDB = async ()=>{
     const conn = await mongoose.connect(process.env.MONGOODB_URI) ;
@@ -38,44 +41,17 @@ app.put("/api/transactions/:id", PutApiTransactionById)
 // ------------ User ------------
 
 app.post('/api/v1/signup' ,  PostApiV1Signup)
-app.post('/api/v1/login' , async (req , res)=>{
-    const {email , password} = req.body;
-
-    try{
-        if(!email || !password){
-            return res.json({
-                success : false , 
-                message : "Please provide email and password"
-            })
-        }
-    
-        const user = await User.findOne({
-            email : email,
-            password : password
-        }).select("name email mobile address ")
-    
-        if(!user){
-            return res.json({
-                success : false , 
-                message : "Invalide Credentials"
-            });
-        }
-        res.json({
-            success : true,
-            data : user,
-            message : "Login Successful"
-        });
-    }
-    catch(err){
-        res.json({
-            success:false,
-            massage:err.massage
-        })
-    }
-   
-})
+app.post('/api/v1/login' , PostApiV1Login)
 
 app.get("/api/v1/users" , GetApiV1Users )
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+    });
+  }
 
 const PORT = process.env.PORT || 5000 ; 
 

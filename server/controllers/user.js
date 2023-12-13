@@ -32,6 +32,43 @@ const PostApiV1Signup = async (req ,res)=>{
    
 }
 
+const PostApiV1Login = async (req , res)=>{
+    const {email , password} = req.body;
+
+    try{
+        if(!email || !password){
+            return res.json({
+                success : false , 
+                message : "Please provide email and password"
+            })
+        }
+    
+        const user = await User.findOne({
+            email : email,
+            password : password
+        }).select("name email mobile address ")
+    
+        if(!user){
+            return res.json({
+                success : false , 
+                message : "Invalide Credentials"
+            });
+        }
+        res.json({
+            success : true,
+            data : user,
+            message : "Login Successful"
+        });
+    }
+    catch(err){
+        res.json({
+            success:false,
+            massage:err.massage
+        })
+    }
+   
+}
+
 const GetApiV1Users = async (req ,res) =>{
     try{
         const Transaction = await User.find()
@@ -54,4 +91,4 @@ const GetApiV1Users = async (req ,res) =>{
 
 
 
-export { PostApiV1Signup , GetApiV1Users }
+export { PostApiV1Signup ,PostApiV1Login , GetApiV1Users }

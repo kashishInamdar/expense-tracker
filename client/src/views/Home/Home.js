@@ -13,12 +13,14 @@ const Home = () => {
     return (
         <>
             <Navbar />
+           
             <div className="container">
+                
                 <img src={vactor} alt="vactor" className="vactor" />
-                <div>
+                <div className="main-div">
 
                     <div className="containt-div">
-                        <h1 className="title">Expence Tracker</h1>
+                        <h1 className="title-1">Expence Tracker</h1>
                         <p className="paregraph">Use an expense tracker with smart features to help you manage your money:</p>
                         <button className="transaction-btn">Add Transaction</button>
                     </div>
